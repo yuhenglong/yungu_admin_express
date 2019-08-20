@@ -1,11 +1,15 @@
 const express = require('express');
 const users = require('./routes/api/users')
 const app = express();
+const bodyParser = require('body-parser');
 
 // DB config
 const MongoClient = require('mongodb').MongoClient;
 //数据库名为：yuAdmin
 const url = 'mongodb://localhost:27017/yuAdmin'
+    // 使用body-parser中间件
+app.use(bodyParser.urlencoded({ extendes: false }))
+
 
 // 连接mongodb数据库
 MongoClient.connect(url, { useNewUrlParser: true }, (err, db) => {
